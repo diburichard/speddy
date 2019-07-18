@@ -1,0 +1,28 @@
+﻿@foreach (var pizza in Order.Pizzas)
+{
+    <p>
+        <strong>
+            @(pizza.Size)cms.
+            @pizza.Special.Name
+            (Bs.@pizza.GetFormattedTotalPrice())
+        </strong>
+    </p>
+
+    <ul>
+        @foreach (var topping in pizza.Toppings)
+        {
+            <li>+ @topping.Topping.Name</li>
+        }
+    </ul>
+}
+
+<p>
+    <strong>
+        Precio total:
+        Bs.@Order.GetFormattedTotalPrice()
+    </strong>
+</p>
+
+@functions {
+    [Parameter] Order Order { get; set; }
+}
